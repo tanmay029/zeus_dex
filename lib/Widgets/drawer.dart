@@ -10,11 +10,12 @@ class MyDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final imageurl =
+    const imageurl =
         "https://static.wikia.nocookie.net/maxpayne/images/c/cb/Max_Payne_mugshot_MP3.jpg/revision/latest?cb=20221229102316";
     return Drawer(
+      backgroundColor: const Color.fromARGB(255, 66, 86, 96),
       child: Container(
-        color: Colors.deepPurple,
+        color: Colors.blueGrey,
         child: ListView(
           children: [
             DrawerHeader(

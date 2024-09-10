@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last
 
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:zeus_dex/utils/routes.dart';
 
@@ -13,16 +14,18 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   String name = "";
   bool changeButton = false;
+  final TextEditingController _emailController = TextEditingController();
+  // final TextEditingController _passController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
 
-  moveToHome(BuildContext context) async {
+  moveToVerify(BuildContext context) async {
     if (_formKey.currentState!.validate()) {
       setState(() {
         changeButton = true;
       });
       await Future.delayed(Duration(seconds: 1));
-      await Navigator.pushNamed(context, MyRoutes.homeRoute);
+      await Navigator.pushNamed(context, MyRoutes.verificationRoute);
       setState(() {
         changeButton = false;
       });
@@ -43,11 +46,9 @@ class _RegisterPageState extends State<RegisterPage> {
               child: SafeArea(
                 child: Column(
                   children: [
-                    
                     SizedBox(
                       height: 50.0,
                     ),
-                    
                     Image.network(
                       "https://i.pinimg.com/474x/f7/27/10/f72710369ed3e8a6e5406e29c0c1b455.jpg",
                       height: 350,
@@ -55,7 +56,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       fit: BoxFit.fill,
                     ),
                     Text(
-                      "Welcome $name",
+                      "Welcome ", //$name",
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -70,26 +71,24 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: Column(
                         children: [
                           TextFormField(
-                            decoration: InputDecoration(
-                              hintText: "Enter Username",
-                              labelText: "Username",
-                            ),
-                            validator: (value) {
-                              if ((value!.isEmpty)) {
-                                return ("Username cannot be empty");
-                              } else if (value.length < 6) {
-                                return ("Username length cannot be less than 6");
-                              } else {
-                                return null;
-                              }
-                            },
-                            onChanged: (value) {
-                              name = value;
-                              setState(() {});
-                            },
-                          ),
+                              controller: _emailController,
+                              keyboardType: TextInputType.emailAddress,
+                              decoration: InputDecoration(
+                                hintText: "Enter Email",
+                                labelText: "Email",
+                              ),
+                              validator: (value) {
+                                if ((value!.isEmpty)) {
+                                  return ("Email cannot be empty");
+                                } else if (EmailValidator.validate(value)) {
+                                  return (null);
+                                } else {
+                                  return ("Invalid Email");
+                                }
+                              }),
                           TextFormField(
                             obscureText: true, //to hide the password
+                            // controller: _passController,
                             decoration: InputDecoration(
                               hintText: "Enter Password",
                               labelText: "Password",
@@ -108,7 +107,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             height: 40.0,
                           ),
                           InkWell(
-                            onTap: () => moveToHome(context),
+                            onTap: () => moveToVerify(context),
                             child: AnimatedContainer(
                               duration: Duration(seconds: 1),
                               width: changeButton ? 50 : 150,
@@ -136,32 +135,6 @@ class _RegisterPageState extends State<RegisterPage> {
                           SizedBox(
                             height: 20.0,
                           ),
-                          // InkWell(
-                          //   onTap: () => moveToLogin(context),
-                          //   child: AnimatedContainer(
-                          //     duration: Duration(seconds: 1),
-                          //     width: changeButton ? 50 : 150,
-                          //     height: 50,
-                          //     alignment: Alignment.center,
-                          //     child: changeButton
-                          //         ? Icon(
-                          //             Icons.done,
-                          //             color: Colors.white,
-                          //           )
-                          //         : Text(
-                          //             "Returning ? Login",
-                          //             style: TextStyle(
-                          //                 color: Colors.white,
-                          //                 fontWeight: FontWeight.bold,
-                          //                 fontSize: 14),
-                          //           ),
-                          //     decoration: BoxDecoration(
-                          //       color: Colors.redAccent,
-                          //       borderRadius:
-                          //           BorderRadius.circular(changeButton ? 50 : 8),
-                          //     ),
-                          //   ),
-                          // ),
                         ],
                       ),
                     )

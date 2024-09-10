@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last
 
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:zeus_dex/utils/routes.dart';
 
@@ -11,8 +12,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  String name = "";
   bool changeButton = false;
+  final TextEditingController _emailController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
 
@@ -53,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
                     height: 20.0,
                   ),
                   Text(
-                    "Welcome $name",
+                    "Welcome ",
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -68,22 +69,19 @@ class _LoginPageState extends State<LoginPage> {
                     child: Column(
                       children: [
                         TextFormField(
+                          controller: _emailController,
                           decoration: InputDecoration(
-                            hintText: "Enter Username",
-                            labelText: "Username",
+                            hintText: "Enter Email",
+                            labelText: "Email",
                           ),
                           validator: (value) {
                             if ((value!.isEmpty)) {
-                              return ("Username cannot be empty");
-                            } else if (value.length < 6) {
-                              return ("Username length cannot be less than 6");
+                              return ("Email cannot be empty");
+                            } else if (EmailValidator.validate(value)) {
+                              return (null);
                             } else {
-                              return null;
+                              return ("Invalid Email");
                             }
-                          },
-                          onChanged: (value) {
-                            name = value;
-                            setState(() {});
                           },
                         ),
                         TextFormField(

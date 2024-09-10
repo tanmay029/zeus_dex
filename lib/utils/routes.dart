@@ -4,4 +4,5 @@ class MyRoutes {
   static String registerRoute = "/register";
   static String initialRoute = "/init";
   static String aboutRoute = "/about";
+  static String verificationRoute = "/verify";
 }

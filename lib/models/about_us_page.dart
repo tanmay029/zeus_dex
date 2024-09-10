@@ -1,5 +1,4 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, sort_child_properties_last
-// import 'package:velocity_x/velocity_x.dart';
 
 import 'package:flutter/material.dart';
 import 'package:zeus_dex/utils/routes.dart';
@@ -22,24 +21,19 @@ class _AboutUsPageState extends State<AboutUsPage> {
           title: Text("About Us"),
           automaticallyImplyLeading: false,
         ),
-        // body: Text(
-        //   "Adipisicing aliqua adipisicing veniam veniam consectetur incididunt non culpa minim. Nulla magna cillum ea reprehenderit laborum nisi laborum non qui commodo laboris. Veniam esse velit aliquip occaecat eiusmod quis adipisicing consectetur veniam. Pariatur veniam amet id officia nulla aute sint cupidatat duis laboris aliqua consequat sit. Nostrud laboris eiusmod irure ut qui fugiat aliquip dolore id culpa velit.",
-        // ),
         body: Column(
           children: [
-            Container(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Adipisicing aliqua adipisicing veniam veniam consectetur incididunt non culpa minim. Nulla magna cillum ea reprehenderit laborum nisi laborum non qui commodo laboris. Veniam esse velit aliquip occaecat eiusmod quis adipisicing consectetur veniam. Pariatur veniam amet id officia nulla aute sint cupidatat duis laboris aliqua consequat sit. Nostrud laboris eiusmod irure ut qui fugiat aliquip dolore id culpa velit.",
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
-                ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                "Adipisicing aliqua adipisicing veniam veniam consectetur incididunt non culpa minim. Nulla magna cillum ea reprehenderit laborum nisi laborum non qui commodo laboris. Veniam esse velit aliquip occaecat eiusmod quis adipisicing consectetur veniam. Pariatur veniam amet id officia nulla aute sint cupidatat duis laboris aliqua consequat sit. Nostrud laboris eiusmod irure ut qui fugiat aliquip dolore id culpa velit.",
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
               ),
             ),
             SizedBox(
               height: 40,
             ),
-            Container(
+            SizedBox(
               // color: Colors.blueAccent,
               width: 400,
               child: Center(
