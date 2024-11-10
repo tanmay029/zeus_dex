@@ -11,9 +11,13 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: Text(
-          "Catalog App ",
-          style: TextStyle(color: Colors.white),
+          "Zeus Dex",
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
+        // actions: [
+        //   IconButton(onPressed: () => {}, icon: Icon(Icons.search)),
+        //   // IconButton(onPressed: () => {}, icon: Icon(Icons.more_vert)),
+        // ],
       ),
       body: Stack(
         children: <Widget>[

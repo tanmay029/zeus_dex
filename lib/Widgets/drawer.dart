@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:zeus_dex/utils/routes.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
@@ -41,6 +42,9 @@ class MyDrawer extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
+              onTap: () async {
+                await Navigator.pushNamed(context, MyRoutes.homeRoute);
+              },
             ),
             ListTile(
               leading: Icon(
@@ -54,6 +58,9 @@ class MyDrawer extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
+              onTap: () async {
+                await Navigator.pushNamed(context, MyRoutes.profileRoute);
+              },
             ),
             ListTile(
               leading: Icon(
@@ -67,20 +74,26 @@ class MyDrawer extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
+              onTap: () async {
+                await Navigator.pushNamed(context, MyRoutes.initialRoute);
+              },
             ),
-            ListTile(
-              leading: Icon(
-                CupertinoIcons.bitcoin_circle,
-                color: Colors.white,
-              ),
-              title: Text(
-                "Previous Trades",
-                textScaleFactor: 1.2,
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            ),
+            // ListTile(
+            //   leading: Icon(
+            //     CupertinoIcons.bitcoin_circle,
+            //     color: Colors.white,
+            //   ),
+            //   title: Text(
+            //     "Previous Trades",
+            //     textScaleFactor: 1.2,
+            //     style: TextStyle(
+            //       color: Colors.white,
+            //     ),
+            //   ),
+            //   onTap: () async {
+            //     await Navigator.pushNamed(context, MyRoutes.initialRoute);
+            //   },
+            // ),
             ListTile(
               leading: Icon(
                 CupertinoIcons.bandage,
@@ -93,6 +106,25 @@ class MyDrawer extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
+              onTap: () async {
+                await Navigator.pushNamed(context, MyRoutes.initialRoute);
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                CupertinoIcons.arrow_up_left_circle_fill,
+                color: Colors.white,
+              ),
+              title: Text(
+                "Logout",
+                textScaleFactor: 1.2,
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              onTap: () async {
+                await Navigator.pushNamed(context, MyRoutes.initialRoute);
+              },
             ),
           ],
         ),

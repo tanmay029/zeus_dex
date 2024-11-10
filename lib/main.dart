@@ -5,6 +5,8 @@ import 'package:zeus_dex/models/about_us_page.dart';
 import 'package:zeus_dex/models/home_page.dart';
 import 'package:zeus_dex/models/init.dart';
 import 'package:zeus_dex/models/login_page.dart';
+import 'package:zeus_dex/models/profile_page.dart';
+import 'package:zeus_dex/models/profile_page/edit_profile_page.dart';
 import 'package:zeus_dex/models/register_page.dart';
 import 'package:zeus_dex/models/verification_page.dart';
 
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeData(
         brightness: Brightness.dark,
       ),
-      initialRoute: "/init",
+      initialRoute: "/profile",
       routes: {
         "": (context) => HomePage(), //might throw error
         "/login": (context) => LoginPage(),
@@ -33,6 +35,8 @@ class MyApp extends StatelessWidget {
         "/init": (context) => Firstpage1(),
         "/about": (context) => AboutUsPage(),
         "/verify": (context) => VerificationPage(),
+        "/profile": (context) => ProfilePage(),
+        "/edit": (context) => EditProfilePage(),
       },
     );
   }
